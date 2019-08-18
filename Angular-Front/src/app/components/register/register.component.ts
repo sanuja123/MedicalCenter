@@ -8,6 +8,9 @@ import { NgForm } from '@angular/forms';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+
+
 export class RegisterComponent implements OnInit {
 
 
@@ -34,6 +37,9 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(user).subscribe(res=>{
       console.log(res);
     });
+
+    
+
 
 
 

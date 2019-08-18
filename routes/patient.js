@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const Patient = require('../model/patient');
+const Patient = require('../models/patient');
 //const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 //const config = require('../config/database');

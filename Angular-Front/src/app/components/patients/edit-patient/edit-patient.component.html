@@ -1,0 +1,84 @@
+<div class="container">
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h2><b>Edit Patient</b></h2>
+      </section>
+  
+      <mat-divider></mat-divider>
+  
+      <br><br><br>
+      
+      <form [formGroup]="updateForm" class="edit-Form">
+  
+        <label><b>Details of Student: </b></label>
+        <br>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Registration Number" formControlName="reg_No" #reg_No>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Name with Initial"  formControlName="name" #name>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Age" formControlName="age" #age>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Address"  formControlName="address" #address>
+        </mat-form-field>
+  
+        <br>
+        <br>
+        
+        <label><b>Details of Mother: </b></label>
+        <div formGroupName="mother">
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Name of Mother"  formControlName="name" #name>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Age"   formControlName="age" #age>
+        </mat-form-field>    
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Job"  formControlName="job" #job>
+        </mat-form-field>
+      </div>
+        <br>
+        <br>
+        
+        <label><b>Details of Father: </b></label>
+        <div formGroupName="father">
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Name of Father" formControlName="name" #name>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Age" formControlName="age" #age>
+        </mat-form-field>    
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Job" formControlName="job" #job>
+        </mat-form-field>
+      </div>
+        <br>
+        <br>
+  
+        <label><b>Diseases: </b></label>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Diseases" formControlName="diseases" #diseases>
+        </mat-form-field>
+        
+        
+  
+        <mat-divider></mat-divider>
+        <br><br>
+        <button mat-raised-button color="accent" routerLink = "/patient">Back</button>
+        <button type="submit" (click) = "updatePatient(this.updateForm.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+      </form>
+    </mat-card>
+    
+    
+    
+  </div>
+  
