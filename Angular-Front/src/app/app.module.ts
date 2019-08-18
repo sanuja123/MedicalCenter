@@ -29,9 +29,9 @@ import { AddPatientComponent } from './components/patients/add-patient/add-patie
 
 //service
 import { AuthService } from './service/auth.service';
-<<<<<<< HEAD
+
 import { PhamacistComponent } from './components/phamacist/phamacist.component';
-=======
+
 import { PatientService } from './service/patient.service';
 
 
@@ -39,28 +39,28 @@ import { PatientService } from './service/patient.service';
 
 
 
->>>>>>> 9e710a80627944dd89a9b1a7552f96d54e660c3c
+
 
 
 
 const applicationRoutes:Routes = [
   {path : 'login',component:LoginComponent},
   {path : 'register',component:RegisterComponent},
-<<<<<<< HEAD
-  {path : 'phamacist',component:PhamacistComponent}
-];
-=======
+
+  {path : 'phamacist',component:PhamacistComponent},
+
+
   {path : '',redirectTo:'login',pathMatch:'full'},
 
   //patients
   {path : 'patient',component:PatientComponent},
   {path : 'patient/add',component:AddPatientComponent},
-  {path : 'patient/edit/:id',component:EditPatientComponent},
-  
+  {path : 'patient/edit/:id',component:EditPatientComponent}
 
 
-];  
->>>>>>> 9e710a80627944dd89a9b1a7552f96d54e660c3c
+
+];
+
 
 
 @NgModule({
@@ -69,16 +69,14 @@ const applicationRoutes:Routes = [
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
+
     PhamacistComponent,
 
-=======
+
     PatientComponent,
     EditPatientComponent,
     AddPatientComponent,
-    
-    
->>>>>>> 9e710a80627944dd89a9b1a7552f96d54e660c3c
+
 
   ],
   imports: [
@@ -89,8 +87,8 @@ const applicationRoutes:Routes = [
     HttpClientModule,
     RouterModule.forRoot(applicationRoutes),
     ReactiveFormsModule,
-    
-    
+
+
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
@@ -103,7 +101,7 @@ const applicationRoutes:Routes = [
     MatDividerModule,
     MatSnackBarModule,
     MatPaginatorModule
-   
+
   ],
   providers: [AuthService,PatientService],
   bootstrap: [AppComponent]
