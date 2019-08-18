@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 import { AuthService } from './service/auth.service';
+import { PhamacistComponent } from './components/phamacist/phamacist.component';
 
 
 
@@ -28,6 +29,7 @@ const applicationRoutes:Routes = [
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
+    PhamacistComponent,
     
 
   ],
