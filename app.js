@@ -3,45 +3,39 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-var bodyParser = require('body-parser');
-const cors = require('cors');
+const bodyParser = require('body-parser');
+var app = express();
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var patientRouter = require('./routes/patient');
 
-var app = express();
-app.use(cors());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
 
-//app.use(bodyParser());
-app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded());
+// parse requests of content-type - application/json
+app.use(bodyParser.json())
 
-//passport
+const config = require('./config/config.js');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
-app.use(passport.initialize());
-app.use(passport.session());
-require('./config/passport')(passport);
+// Connecting to the database
+mongoose.connect(config.url, {
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Successfully connected to the database");    
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...', err);
+    process.exit();
+});
 
-//mongodb
 
-
-const config = require('./config/database');
-
-const connection = mongoose.connect(config.database, {useNewUrlParser: true,useCreateIndex: true,useFindAndModify: false});
-if(connection){
-  console.log("database connected");
-}
-else{
-  console.log("database not connected");
-}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,9 +43,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/patient', patientRouter);
+app.use('/users', usersRouter)
+app.use('/patient', patientRouter)
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
