@@ -19,8 +19,9 @@ import { PhamacistComponent } from './components/phamacist/phamacist.component';
 
 const applicationRoutes:Routes = [
   {path : 'login',component:LoginComponent},
-  {path : 'register',component:RegisterComponent}
-];  
+  {path : 'register',component:RegisterComponent},
+  {path : 'phamacist',component:PhamacistComponent}
+];
 
 
 @NgModule({
@@ -30,7 +31,7 @@ const applicationRoutes:Routes = [
     LoginComponent,
     RegisterComponent,
     PhamacistComponent,
-    
+
 
   ],
   imports: [
