@@ -12,7 +12,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var patientRouter = require('./routes/patient');
-
+var phamacistrouter = require('./routes/phamacist');
 var app = express();
 app.use(cors());
 
@@ -52,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/patient', patientRouter);
+app.use('/phamacist',phamacistrouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
