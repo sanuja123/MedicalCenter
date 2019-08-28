@@ -12,6 +12,8 @@ var patientSchema = new Schema({
 
     address:{type:String,required:true},
 
+    mobile_No:{type:String},
+
     mother: {
         name: {type:String,required:true},
         job:{type:String,required:true},

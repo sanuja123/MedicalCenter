@@ -17,7 +17,7 @@ export class PatientComponent implements OnInit {
   
 
   patient:Patient[];
-  displayedColumns:string[]=['reg_No','name','age','address','mother','father','diseases','action'];
+  displayedColumns:string[]=['reg_No','name','age','address','mobile_No','mother','father','diseases','action'];
   
  
   

@@ -44,6 +44,7 @@ router.post('/add', function(req, res) {
         name:req.body.name,
         age:req.body.age,
         address:req.body.address,
+        mobile_No:req.body.mobile_No,
         mother:req.body.mother,
         father:req.body.father,
         diseases:req.body.diseases,
@@ -73,6 +74,7 @@ router.post('/update/:id',function(req,res){
             patient.name=req.body.name,
             patient.age=req.body.age,
             patient.address=req.body.address,
+            patient.mobile_No=req.body.mobile_No,
             patient.mother=req.body.mother,
             patient.father=req.body.father,
             patient.diseases=req.body.diseases,
@@ -88,7 +90,7 @@ router.post('/update/:id',function(req,res){
 });
 
 //remove patient information
-router.post('/delete/:id',function(req,res){
+router.get('/delete/:id',function(req,res){
 
     Patient.findByIdAndRemove({_id:req.params.id},function(err,patient){
         if(err)

@@ -27,6 +27,11 @@
         <td mat-cell *matCellDef="let element">{{element.address}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="mobile_No">
+        <th mat-header-cell *matHeaderCellDef>mobile_No</th>
+        <td mat-cell *matCellDef="let element">{{element.mobile_No}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="mother">
         <th mat-header-cell *matHeaderCellDef>Mother</th>
         <td mat-cell *matCellDef="let element">{{element.mother.name}}</td>
