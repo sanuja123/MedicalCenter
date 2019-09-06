@@ -1,0 +1,9 @@
+.inventory-body {
+  position: fixed;
+  min-width: 100%;
+  background-image: url("/assets/img/medi.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left;
+  background-size: cover;
+  }

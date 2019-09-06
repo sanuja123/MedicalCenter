@@ -7,14 +7,14 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AuthService {
 
-  user:any;
+  user: any;
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
 
-  registerUser(user){
-    //console.log(user);
-    return this.http.post("http://localhost:3000/users/register",user);
+  registerUser(user) {
+    // console.log(user);
+    return this.http.post('http://localhost:3000/users/register', user);
   }
 }
