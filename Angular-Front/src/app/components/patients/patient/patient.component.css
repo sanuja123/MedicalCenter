@@ -4,3 +4,8 @@ table {
 .mat-column-right{
     text-align: center;
 }
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
