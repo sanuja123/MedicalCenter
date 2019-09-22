@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import { Component, OnInit, ElementRef ,ViewChild } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
-=======
-import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,Validators} from '@angular/forms';
->>>>>>> e14c0acc3c84b40dfb9573c51916df31aa6ff20c
 
 
 @Component({
@@ -29,7 +24,6 @@ export class MedireportComponent implements OnInit {
 
   ngOnInit() {
   }
-<<<<<<< HEAD
   @ViewChild('content') content: ElementRef;
 
   /*public downloadPDF(){
@@ -70,9 +64,5 @@ pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
 pdf.save('MYPdf.pdf'); // Generated PDF
 });
 }
-
-
-=======
->>>>>>> e14c0acc3c84b40dfb9573c51916df31aa6ff20c
 
 }
