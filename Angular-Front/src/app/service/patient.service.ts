@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {Patient} from '../patient.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-
-
 export class PatientService {
-
-  patient:any;
-
+  
+  //patient:any;
+  patient:Patient[];
   uri = 'http://localhost:3000';
   constructor(private http : HttpClient) { }
 
@@ -24,31 +22,13 @@ export class PatientService {
   }
 
   addPatient(patient){
-    /*const patient = {
-      reg_No:reg_No,
-      name:name,
-      age:age,
-      address:address,
-      mother: mother,
-      father: father,
-      diseases:diseases
-
-    }*/
+    
     const reqHeader = new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json');
     return this.http.post(`${this.uri}/patient/add`,patient,{headers :reqHeader});
   }
 
   updatePatient(id,patient){
-    /*const patient = {
-      reg_No:reg_No,
-      name:name,
-      age:age,
-      address:address,
-      mother: mother,
-      father: father,
-      diseases:diseases
-
-    }*/
+    
     const reqHeader = new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json');
     return this.http.post(`${this.uri}/patient/update/${id}`,patient,{headers :reqHeader});
   }
@@ -56,6 +36,10 @@ export class PatientService {
   deletePatient(id){
     return this.http.get(`http://localhost:3000/patient/delete/${id}`);
   }
+
+ 
+
+  
 }
 
 

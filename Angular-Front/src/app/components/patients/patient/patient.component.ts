@@ -1,10 +1,9 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { PatientService } from '../../../service/patient.service';
 import {Router} from '@angular/router';
-import{MatTableDataSource} from '@angular/material';
-
-import {Patient} from '../../../patient.model';
-
+import{MatTableDataSource, MatPaginator,MatSort} from '@angular/material';
+//import {Patient} from '../../../patient.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,35 +13,39 @@ import {Patient} from '../../../patient.model';
 })
 export class PatientComponent implements OnInit {
 
-  
-
-  patient:Patient[];
-  displayedColumns:string[]=['reg_No','name','age','address','mobile_No','mother','father','diseases','action'];
-  
- 
-  
-  
+  //patient : MatTableDataSource<any>;
   constructor(private patientService:PatientService,private router:Router) { }
- 
- 
+  //patient:Patient[];
+  displayedColumns:string[]=['reg_No','name','age','address','mobile_No','mother','father','diseases','action'];
+  dataSource: any;
+  searchKey:string;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator; 
+  @ViewChild(MatSort) sort: MatSort;
   ngOnInit() {
     /*this.patientService.getPatient().subscribe((patient)=>{
       console.log(patient);
     })*/
-    this.fetchPatients();
+       
+    
+    this.fetchPatients();   
     
   }
 
   fetchPatients(){
     this.patientService
       .getPatient()
-      .subscribe((data:Patient[])=>{
-        this.patient = data;
+      .subscribe(res =>{
+        this.dataSource = new MatTableDataSource();
+        this.dataSource.data = res;
+        this.dataSource.sort = this.sort; 
+        this.dataSource.paginator = this.paginator; 
         console.log('Data requested......');
-        console.log(this.patient);
+        console.log(this.dataSource.data);
       
-        
       });
+    
+      //this.patient.paginator = this.paginator;
   }
 
   editPatient(id){
@@ -53,6 +56,15 @@ export class PatientComponent implements OnInit {
       this.fetchPatients();
       
     });
+  }
+
+  onSearchClear(){
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter(){
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
   
 

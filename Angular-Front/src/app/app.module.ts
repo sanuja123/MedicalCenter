@@ -6,14 +6,14 @@ import { RouterModule,Routes } from '@angular/router';
 
 //Angular 6 Material Features
 import {MatToolbarModule,MatFormFieldModule,MatInputModule,MatOptionModule,MatSelectModule,MatIconModule,MatButtonModule,MatCardModule,MatTableModule,MatDividerModule,MatSnackBarModule} from '@angular/material';
-
-import {MatRadioModule} from '@angular/material/radio'
-
-import {MatPaginatorModule} from '@angular/material/paginator';
-
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material/radio'
+import { MatSortModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+
+
+
+
 import { HttpClientModule }    from '@angular/common/http';
 //import { AppRoutingModule } from './app-routing.module';
 
@@ -79,7 +79,6 @@ const applicationRoutes:Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     //AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -99,7 +98,9 @@ const applicationRoutes:Routes = [
     MatDividerModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatSortModule,
     MatRadioModule,
+    BrowserAnimationsModule,
    
   ],
   providers: [AuthService,PatientService],
