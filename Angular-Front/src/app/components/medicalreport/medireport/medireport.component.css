@@ -1,0 +1,23 @@
+.create-form{
+    min-width: 100px;
+    width:100%;
+}
+.field-full-width{
+    width: 100%;
+}
+.mat-typography{
+    text-align: left;
+    
+}
+.example-container .mat-radio-button {
+    margin: 0 12px;
+ }
+ 
+ 
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .example-selected-value {
+    margin: 15px 0;
+  }

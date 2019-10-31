@@ -1,7 +1,92 @@
 
-<p>
-  phamacist works!
+<mat-toolbar>
+    <span>Medical Center Application</span>
+    <div>
+    <button mat-raised-button color = "primary" (click)="onCreate()"><mat-icon> add </mat-icon></button>
+  </div>
+    <br><br>
+  </mat-toolbar>
+<div>
+  <br>
+  <mat-card>
 
-  dmndndv
-</p>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table  class="lessons-table mat-elevation-z8" [dataSource] = "phamacist" >
 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-icon-button color="primary"></button><mat-icon>launch</mat-icon>
+          <button mat-raised-button color = "primary" (click)="onCreate()"><mat-icon> <mat-icon>launch</mat-icon> </mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+
+    </table>
+
+
+
+
+
+    <button mat-raised-button color = "primary"  [routerLink]="['/patient/add']" routerLinkActive="router-link-active" > add</button>
+    <mat-checkbox>checked</mat-checkbox>
+  </mat-card>
+
+
+
+  <p>
+
+    <span matBadge={{numFlags}}  matBadgeOverlap="false">Text with a badge</span>
+  </p>
+
+  <p>
+    Button with a badge on the left
+    <button mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="warn" matBadgeDisabled=false  >
+      Action
+    </button>
+  </p>
+
+
+
+
+
+ <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge={{numFlags}}>num Of flags</div>
+
+
+  <p>
+    Icon with a badge
+    <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+      <!-- Include text description of the icon's meaning for screen-readers -->
+      <span class="cdk-visually-hidden">
+        Example with a home icon with overlaid badge showing the number 15
+      </span>
+  </p>
+
+
+
+
+
+  <i class="fa fa-envelope-o fa-3x"></i>
+
+</div>

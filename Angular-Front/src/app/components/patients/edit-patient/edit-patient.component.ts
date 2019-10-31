@@ -7,6 +7,7 @@ import{ MatSnackBar, MatSnackBarModule} from '@angular/material';
 
 import {Patient} from '../../../patient.model';
 import { PatientService } from '../../../service/patient.service';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-patient',
@@ -17,6 +18,7 @@ export class EditPatientComponent implements OnInit {
 
   id: String;
   patient:any={};
+
   updateForm:FormGroup;
 
   constructor(private patientService:PatientService,private router:Router,private route:ActivatedRoute,private snackBar:MatSnackBar,private fb:FormBuilder) { 
@@ -30,7 +32,7 @@ export class EditPatientComponent implements OnInit {
       name:['',Validators.required],
       age:['',Validators.required],
       address:'',
-
+      mobile_No:'',
       mother:this.fb.group({
         name:['',Validators.required],
         job:'',
@@ -41,7 +43,10 @@ export class EditPatientComponent implements OnInit {
         job:'',
         age:''
       }),
-      diseases:[''],
+      //diseases:[''],
+      diseases: this.fb.array([
+        this.fb.control('')
+      ]),
     });
   }
 
@@ -56,6 +61,7 @@ export class EditPatientComponent implements OnInit {
         this.updateForm.get('name').setValue(this.patient.name);
         this.updateForm.get('age').setValue(this.patient.age);
         this.updateForm.get('address').setValue(this.patient.address);
+        this.updateForm.get('mobile_No').setValue(this.patient.mobile_No);
         this.updateForm.get('mother').setValue(this.patient.mother);
         this.updateForm.get('father').setValue(this.patient.father);
         this.updateForm.get('diseases').setValue(this.patient.diseases);
@@ -63,7 +69,18 @@ export class EditPatientComponent implements OnInit {
     });
   }
 
-  updatePatient(reg_No,name,age,address,mother,father,diseases){
+  get diseases() {
+    return this.updateForm.get('diseases') as FormArray;
+  }
+
+  updateDiseases() {
+    for (let i = 1; i <= 2; i++) {    
+        this.diseases[i].Value = this.patient.diseases;  
+  }
+}
+ 
+  
+  updatePatient(reg_No,name,age,address,mobile_No,mother,father,diseases){
     let Form = JSON.stringify(this.updateForm.value);
     console.log(Form);
     this.patientService.updatePatient(this.id,Form).subscribe(()=>{

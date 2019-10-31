@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { PatientService } from '../../../service/patient.service';
- 
+import { FormArray } from '@angular/forms';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class AddPatientComponent implements OnInit {
       name:['',Validators.required],
       age:['',Validators.required],
       address:'',
-
+      mobile_No:'',
       mother:this.fb.group({
         name:['',Validators.required],
         job:'',
@@ -33,15 +33,24 @@ export class AddPatientComponent implements OnInit {
         job:'',
         age:''
       }),
-      diseases:[''],
+      //diseases:[''],
+      diseases: this.fb.array([
+        this.fb.control('')
+      ]),
     });
   }
     
 
    ngOnInit() {
   }
-    
+  
+  get diseases() {
+    return this.createForm.get('diseases') as FormArray;
+  }
 
+  addDiseases() {
+    this.diseases.push(this.fb.control(''));
+  }
   
 
   addPatient(reg_No,name,age,address,mother,father,diseases){

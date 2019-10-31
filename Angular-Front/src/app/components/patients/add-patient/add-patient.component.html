@@ -30,6 +30,10 @@
         <input matInput placeholder="Address"  formControlName="address" #address>
       </mat-form-field>
 
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Mobile Number"  formControlName="mobile_No" #mobile_No>
+      </mat-form-field>
+
       <br>
       <br>
       
@@ -63,12 +67,29 @@
       <br>
       <br>
 
+      <!--
       <label><b>Diseases: </b></label>
 
       <mat-form-field class="field-full-width">
         <input matInput placeholder="Diseases" formControlName="diseases" #diseases>
       </mat-form-field>
-      
+      -->
+
+      <div formArrayName="diseases">
+        <label><b>Diseases: </b></label>
+        <br>
+         <button (click)="addDiseases()" mat-raised-button color="primary">Add Diseases</button>
+         <br>
+    
+        <div *ngFor="let address of diseases.controls; let i=index">
+          <!-- The repeated alias template -->
+         
+
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="Diseases" [formControlName]="i">
+          </mat-form-field>
+        </div>
+      </div>
       
 
       <mat-divider></mat-divider>

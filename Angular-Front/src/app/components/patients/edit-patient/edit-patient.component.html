@@ -2,14 +2,14 @@
     <br>
     <mat-card>
       <section class="mat-typography">
-        <h2><b>Edit Patient</b></h2>
+        <h2><b>Update Patients</b></h2>
       </section>
   
       <mat-divider></mat-divider>
   
       <br><br><br>
       
-      <form [formGroup]="updateForm" class="edit-Form">
+      <form [formGroup]="updateForm" class="update-Form">
   
         <label><b>Details of Student: </b></label>
         <br>
@@ -28,6 +28,10 @@
   
         <mat-form-field class="field-full-width">
           <input matInput placeholder="Address"  formControlName="address" #address>
+        </mat-form-field>
+  
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Mobile Number"  formControlName="mobile_No" #mobile_No>
         </mat-form-field>
   
         <br>
@@ -63,12 +67,28 @@
         <br>
         <br>
   
+        <!--
         <label><b>Diseases: </b></label>
   
         <mat-form-field class="field-full-width">
           <input matInput placeholder="Diseases" formControlName="diseases" #diseases>
         </mat-form-field>
-        
+        -->
+  
+        <div formArrayName="diseases">
+            <label><b>Diseases</b></label>
+            
+          
+          <div *ngFor="let address of diseases.controls; let i=index">
+           
+           
+            <mat-form-field class="field-full-width">
+              <input matInput placeholder="Diseases" [formControlName]="i">
+            </mat-form-field>
+            
+          </div>
+        </div>
+    
         
   
         <mat-divider></mat-divider>
